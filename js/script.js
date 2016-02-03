@@ -1,10 +1,12 @@
-var allCards = $("#boxcard div");
+var allCards = $(".card");
 var allImages = [ "images/bulbasaur.jpg" , "images/caterpee.jpg" , "images/charmander.jpg" , "images/eevee.jpg" , "images/jigglypuff.jpg" , "images/meowth.jpg" , "images/pikachu.jpg" , "images/psyduck.jpg" , "images/squirttle.jpg" , "images/weedle.jpg" , "images/bulbasaur.jpg" , "images/caterpee.jpg" , "images/charmander.jpg" , "images/eevee.jpg" , "images/jigglypuff.jpg" , "images/meowth.jpg" , "images/pikachu.jpg" , "images/psyduck.jpg" , "images/squirttle.jpg" , "images/weedle.jpg"];
 
 var nthChildCounter = 1;
 var clickCounter = 0;
 var clickedImage1 = 0;
 var clickedImage2 = 0;
+var clickedCard1 =  0;
+var clickedCard2 = 0;
 
 
 //used the Fisher-Yates Shuffle:
@@ -32,14 +34,18 @@ var shuffle = function(array) {
 
 $(document).ready(function() {
 
+
+	$(".card").flip ({
+		axis: "y",
+		trigger: "click"
+	});
 	// shuffle the deck
 	var newDeck = shuffle(allImages);
 	
 	//assign iamges to cards randomly
-	for (i = 0; i <= allCards.length; i++) {
+	for (i = 0; i < newDeck.length; i++) {
  		// This variable is so that counter will go from 1 to 20 cause nth child starts at 1, an array starts at 0, vaiable declared above so outside of loop and isn't reestablished at 1.
-
-		$("#boxcard div:nth-child(" + nthChildCounter + ")").css("background-image" , "url(" + newDeck[i] + ")");
+		$("div .card:nth-child(" + nthChildCounter + ") .back").css("background-image" , "url(" + newDeck[i] + ")");
 
 		nthChildCounter++;
 	};
@@ -48,22 +54,24 @@ $(document).ready(function() {
 	// computer checks div and stores img in var
 	// player clicks second div
 	// computer checks div and stores img in var (wether or not they are same)
-	$("#boxcard div").on("click", function() {
+	$("#boxcard div .front").on("click", function() {
 		clickCounter++; 
 		if (clickCounter % 2 !== 0 ) {
-			clickedImage1 = $(this).css("background-image");
-			console.log(clickedImage1);
+			clickedCard1 = $(this);
+			clickedImage1 = $(this).siblings().css("background-image");
 		} else if (clickCounter % 2 == 0 ) {
-			clickedImage2 = $(this).css("background-image");
-			console.log(clickedImage2);
+			clickedImage2 = $(this).siblings().css("background-image");
+			clickedCard2 = $(this);
 			// need another if statement to check if image is the same 
 			if (clickedImage1 == clickedImage2 ) {
-				alert("A Match!");
 			} else {
-				alert("Try again");
+				setTimeout(function(){
+					clickedCard1.parent().flip('toggle');
+					clickedCard2.parent().flip('toggle');
+				}, 1000)
 			}
 		};
-});
+	});
 
 });
 

@@ -1,6 +1,5 @@
 var allCards = $(".card");
 var allImages = [ "images/bulbasaur.jpg" , "images/caterpee.jpg" , "images/charmander.jpg" , "images/eevee.jpg" , "images/jigglypuff.jpg" , "images/meowth.jpg" , "images/pikachu.jpg" , "images/psyduck.jpg" , "images/squirttle.jpg" , "images/weedle.jpg" , "images/bulbasaur.jpg" , "images/caterpee.jpg" , "images/charmander.jpg" , "images/eevee.jpg" , "images/jigglypuff.jpg" , "images/meowth.jpg" , "images/pikachu.jpg" , "images/psyduck.jpg" , "images/squirttle.jpg" , "images/weedle.jpg"];
-
 var nthChildCounter = 1;
 var clickCounter = 0;
 var clickedImage1 = 0;
@@ -13,18 +12,12 @@ var matchedCounter = 0;
 //used the Fisher-Yates Shuffle:
 
 var shuffle = function(array) {
-	"use strict";
+	"use strict"; // used this command from searching here. http://stackoverflow.com/questions/33001246/uncaught-syntaxerror-block-scoped-declarations-let-const-function-class-no
     let counter = array.length;
 
-    // While there are elements in the array
     while (counter > 0) {
-        // Pick a random index
         let index = Math.floor(Math.random() * counter);
-
-        // Decrease counter by 1
         counter--;
-
-        // And swap the last element with it
         let temp = array[counter];
         array[counter] = array[index];
         array[index] = temp;
@@ -36,7 +29,7 @@ $(document).ready(function() {
 
 	$(".card").flip ({
 		axis: "y",
-		trigger: "click"
+		trigger: "manual"
 	});
 
 	function setBoard(){
@@ -46,17 +39,14 @@ $(document).ready(function() {
 		//assign iamges to cards randomly
 		for (i = 0; i < newDeck.length; i++) {
 	 		// This variable is so that counter will go from 1 to 20 cause nth child starts at 1, an array starts at 0, vaiable declared above so outside of loop and isn't reestablished at 1.
-	 		
-			$("div .card:nth-child(" + nthChildCounter + ") .back").css("background-image" , "url(" + newDeck[i] + ")");
+	 		$("div .card:nth-child(" + nthChildCounter + ") .back").css("background-image" , "url(" + newDeck[i] + ")");
 
 			nthChildCounter++;
 		};
 	};
-	// player clicks div
-	// computer checks div and stores img in var
-	// player clicks second div
-	// computer checks div and stores img in var (wether or not they are same)
+
 	$("#boxcard div .front").on("click", function() {
+		$(this).parent().flip(true);
 		clickCounter++; 
 		$("#counter").html(clickCounter);
 		if (clickCounter % 2 !== 0 ) {
@@ -67,12 +57,12 @@ $(document).ready(function() {
 			clickedCard2 = $(this);
 			// need another if statement to check if image is the same 
 			if (clickedImage1 == clickedImage2 ) {
-				// clickedCard1.children().off('.flip');
+				// clickedCard1.parent().off('.flip');
 				// figure oout how to make pairs unclickable
-				// clickedCard2.children().off(".flip");
+				// clickedCard2.parent().off(".flip");
 				matchedCounter++;
 				if (matchedCounter == 10) {
-					setTimeout(alert("You win baby girl!"), 1000);
+					setTimeout(alert("You win baby girl!"), 900);
 				}
 			} else {
 				setTimeout(function(){

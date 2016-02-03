@@ -1,29 +1,68 @@
 * {
-	margin: 0;
+	margin: 7px;
 	padding: 0;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Luckiest Guy', cursive;
 }
-h1 {
-	font-size: 51px;
-	color: #3399FF;
+/*h1 {
+	font-size: 93px;
+	color: #3565AE;
 	text-align: center;
 	text-shadow: 0 1px 5px rgba(0,0,0,.5);
+	float: left;
+	margin-top: 122px;
+    margin-right: 13px;
+    margin-left: 55px;
+}*/
+h2 {
+	text-align: center;
+	float: left;
+    /*padding-bottom: 10px;
+    margin-top: -97px;*/
+    /*font-size: 53px;*/
+	color: #3565AE;
+	margin-top: 20px;
+
 }
+#memory {
+	font-size: 83px;
+	text-decoration: underline;
+	margin-top: -24px;
+	margin-left: 22px;
+	text-shadow: 0 8px 5px rgba(0,0,0,1.5);
+}
+#subtitle {
+	font-size: 45px;
+	text-shadow: 0 8px 5px rgba(0,0,0,1.5);
+}
+#instructions {
+	font-size: 19px;
+	color: black;
+	text-shadow: 0;
+}
+h4 {
+	text-align: center;
+	font-size: 34px;
+	color: #3565AE;
+	text-shadow: 0 8px 5px rgba(0,0,0,1.5);
+	float: left;
+}*/
 body {
 	font: 18px Verdana;
 	color: #FFF;
-  	background: #CCC;
-} 
+	background-size: cover;
+}  
+
 #picbox {
 	margin: 0px auto;
 	width: 800px;
+	float: right;
 }
 #boxcard {
 	z-index: 1;
 	margin: 10px 0 0;
 }
 #boxcard .card {
-	float: left;
+	float: center;
 	width: 125px;
 	height: 125px;
 	margin: 5px;
@@ -31,14 +70,15 @@ body {
 	z-index: 2;
 	display: inline-block;
 	background-size: cover;
+
 }
 
 #boxcard .card div {
-	border: 3px solid #3399FF;
+	border: 4px solid #3565AE;
 	cursor: pointer;
-	border-radius: 28px;
+	border-radius: 61px;
 	box-shadow: 0 1px 5px rgba(0,0,0,.5);
-	background: #B1B1B1;
+	background: #FFCB05;
 	margin: 10px;
 	background-size: cover;
 }
@@ -58,11 +98,14 @@ body {
 }
 #boxbuttons .button {
 	text-transform: uppercase;
-	background: #3399FF;
-	padding: 5px 10px;
+	background: #3565AE;
+	padding: 9px 14px;
 	margin: 5px;
 	border-radius: 10px;
 	cursor: pointer;
+	color: #FFCB05;
+	font-size: 23px;
+
 }
 #boxbuttons .button:hover {
 	background: #999;

@@ -57,20 +57,21 @@ $(document).ready(function() {
 			clickedCard2 = $(this);
 			// need another if statement to check if image is the same 
 			if (clickedImage1 == clickedImage2 ) {
-				// clickedCard1.parent().off('.flip');
-				// figure oout how to make pairs unclickable
-				// clickedCard2.parent().off(".flip");
 				matchedCounter++;
 				if (matchedCounter == 10) {
-					setTimeout(alert("You win baby girl!"), 900);
+					swal({   
+						title: "You won baby girl!",   
+						text: " ",   
+						imageUrl: "images/nichead.png" 
+					});
 				}
 			} else {
 				setTimeout(function(){
 					clickedCard1.parent().flip('toggle');
 					clickedCard2.parent().flip('toggle');
-				}, 1000)
+				}, 900)
 			}
-		};
+		}
 	});
 	$("#reset").on("click", function() {
 		clickCounter = 0;
@@ -80,7 +81,7 @@ $(document).ready(function() {
 		matchedCounter = 0;
 	});
 
-setBoard();
+	setBoard();
 
 });
 

@@ -38,7 +38,7 @@ $(document).ready(function() {
 		newDeck = shuffle(allImages);
 		//assign iamges to cards randomly
 		for (i = 0; i < newDeck.length; i++) {
-	 		// This variable is so that counter will go from 1 to 20 cause nth child starts at 1, an array starts at 0, vaiable declared above so outside of loop and isn't reestablished at 1.
+	 		// This statement is so that counter will go from 1 to 20 cause nth child starts at 1, an array starts at 0, vaiable declared above so outside of loop and isn't reestablished at 1.
 	 		$("div .card:nth-child(" + nthChildCounter + ") .back").css("background-image" , "url(" + newDeck[i] + ")");
 
 			nthChildCounter++;
